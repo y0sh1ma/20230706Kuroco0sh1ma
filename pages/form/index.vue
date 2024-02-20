@@ -1,6 +1,6 @@
-<template>
+ï»¿<template>
   <div>
-    <h1>FORMƒy[ƒW</h1>
+    <h1>FORMãƒšãƒ¼ã‚¸</h1>
 
     <form v-if="!submitted" ref="form">
       <div v-if="error" class="error">
@@ -10,12 +10,12 @@
       </div>
 
       <div class="row--status">
-        <h2>ƒtƒH[ƒ€–¼</h2>
+        <h2>ãƒ•ã‚©ãƒ¼ãƒ å</h2>
         <div>{{ name }}</div>
       </div>
 
       <div class="row--status">
-        <h2>à–¾</h2>
+        <h2>èª¬æ˜Ž</h2>
         <div>
           <p v-for="(line, idx) in textLines2texts(info)" :key="idx">
             {{ line }}
@@ -24,7 +24,7 @@
       </div>
 
       <div class="row--status">
-        <h2>ƒTƒ“ƒNƒX•¶Œ¾</h2>
+        <h2>ã‚µãƒ³ã‚¯ã‚¹æ–‡è¨€</h2>
         <div>
           <p v-for="(line, idx) in textLines2texts(thanksText)" :key="idx">
             {{ line }}
@@ -33,7 +33,7 @@
       </div>
 
       <div class="row--status">
-        <h2>ƒtƒH[ƒ€€–Ú</h2>
+        <h2>ãƒ•ã‚©ãƒ¼ãƒ é …ç›®</h2>
         <div class="row--internal">
           <div v-for="col in cols" :key="col.key">
             <p>[{{ col.title }}]</p>
@@ -54,14 +54,14 @@
 
     <form v-else>
       <div class="row--status">
-        <h2>–â‚¢‡‚í‚¹ID</h2>
+        <h2>å•ã„åˆã‚ã›ID</h2>
         <div>
           {{ submittedId }}
         </div>
       </div>
 
       <div class="row--status">
-        <h2>ƒTƒ“ƒNƒX•¶Œ¾</h2>
+        <h2>ã‚µãƒ³ã‚¯ã‚¹æ–‡è¨€</h2>
         <div>
           <p v-for="(line, idx) in textLines2texts(thanksText)" :key="idx">
             {{ line }}
@@ -77,7 +77,7 @@
 </template>
 
 <script>
-const FORM_ID = 3; // ì¬‚µ‚½ƒtƒH[ƒ€’è‹`‚ÌID
+const FORM_ID = 3; // ä½œæˆã—ãŸãƒ•ã‚©ãƒ¼ãƒ å®šç¾©ã®ID
 
 export default {
   async asyncData({ $axios }) {
