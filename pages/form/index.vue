@@ -120,7 +120,7 @@ export default {
       try {
         // post data
         const { id } = await this.$axios.$post(
-          `/rcms-api/8/form?id=${FORM_ID}`,
+          `/rcms-api/4/form?id=${FORM_ID}`,
           body
         );
         this.error = null;
