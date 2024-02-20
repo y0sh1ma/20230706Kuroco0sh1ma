@@ -4,6 +4,8 @@
     <div>{{response.details.ext_2}}</div>
     <div>{{response.details.ext_3}}</div>
 
+    <a href="/form/">form‚Ö</a>
+
     <div v-for="n in response.details.ext_4" :key="n.slag" >
       <img :src="n.ext_4.url" width="400">
       <div>{{ n.ext_3 }}</div>
