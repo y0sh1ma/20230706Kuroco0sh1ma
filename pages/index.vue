@@ -1,10 +1,11 @@
-<template>
+Ôªø<template>
   <div>
     <img :src="response.details.ext_1.url" width="800">
     <div>{{response.details.ext_2}}</div>
     <div>{{response.details.ext_3}}</div>
 
-    <a href="/form/">formÇ÷</a>
+    <a href="/form/">form„Å∏</a><br>
+    <a href="/form2/">form„Å∏</a><br>
 
     <div v-for="n in response.details.ext_4" :key="n.slag" >
       <img :src="n.ext_4.url" width="400">
