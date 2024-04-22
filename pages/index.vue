@@ -1,6 +1,11 @@
 ﻿<template>
+    <UiPageHeader
+      :subject="response.details.subject"
+      subheading="Privacy Policy"
+    />
   <div>
     <div>{{response.details.ext_3}}</div>
+    <div v-html="response.details.ext_3"></div>
   </div>
 </template>
 
