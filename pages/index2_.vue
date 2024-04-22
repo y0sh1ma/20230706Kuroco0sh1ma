@@ -4,6 +4,11 @@
     <div>{{response.details.ext_2}}</div>
     <div>{{response.details.ext_3}}</div>
 
+<!---
+    <a href="/form/">formへ</a><br>
+    <a href="/form2/">form（確認画面付）へ</a><br>
+--->
+
     <div v-for="n in response.details.ext_4" :key="n.slag" >
       <img :src="n.ext_4.url" width="400">
       <div>{{ n.ext_3 }}</div>
@@ -16,7 +21,7 @@
 <script>
 export default {
   async asyncData({ $axios }) {
-    return { response: await $axios.$get('/rcms-api/3/service/3') };
+    return { response: await $axios.$get('/rcms-api/3/service/4') };
   },
 };
 </script>
