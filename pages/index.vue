@@ -1,7 +1,7 @@
 ﻿<template>
   <div>
     <!--- <div>{{response.details.ext_3}}</div> --->
-    <div v-html="response.details.ext_3"></div>
+    <div v-html="response.details.contents"></div>
   </div>
 </template>
 
