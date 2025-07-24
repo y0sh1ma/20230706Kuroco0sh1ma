@@ -1,4 +1,6 @@
-﻿<template>
+﻿
+
+<template>
   <div>
     <img :src="response.details.ext_1.url" width="800">
     <div>{{response.details.ext_2}}</div>
@@ -11,7 +13,7 @@
       <div>{{ n.ext_6 }}</div>
     </div>
 
-    <p>{{response.details.ext_7}}</p>
+    <div v-html="response.details.ext_7"></div>
 
   </div>
 </template>
@@ -23,4 +25,3 @@ export default {
   },
 };
 </script>
-
