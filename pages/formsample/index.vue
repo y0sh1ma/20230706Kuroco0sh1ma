@@ -6,7 +6,7 @@
     <div v-for="n in resp.list" :key="n.slag" >
       <div>{{ n.subject }}</div>
       <div>{{ n.contents }}</div>
-      <a href="/formsampleditail/{{ n.topics_id }}"><div>{{ n.topics_id }}</div></a>
+      <a :href="`/formsampleditail/?id=${n.topics_id}`"><div>{{ n.topics_id }}</div></a>
     </div>
 
   </div>
