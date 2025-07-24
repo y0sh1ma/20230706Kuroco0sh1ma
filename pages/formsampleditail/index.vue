@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    <img :src="resp.details.ext_1.url" width="800">
+
     <div>{{resp.details.topics_id}}</div>
     <div>{{resp.details.subject}}</div>
     <div v-html="response.details.contents"></div>
