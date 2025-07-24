@@ -10,7 +10,9 @@
       <div>{{ n.ext_5 }}</div>
       <div>{{ n.ext_6 }}</div>
     </div>
-    <div>{{response.details.ext_7}}</div>
+
+    <p>{{response.details.ext_7}}</p>
+
   </div>
 </template>
 
