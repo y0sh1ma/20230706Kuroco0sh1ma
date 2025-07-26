@@ -17,15 +17,6 @@
         />
       </div>
       <div style="margin-bottom:16px;">
-        <strong>更新日時：</strong>
-        <input
-          v-model="form.update_ymdhi"
-          type="text"
-          style="width:100%; padding:6px;"
-          required
-        />
-      </div>
-      <div style="margin-bottom:16px;">
         <strong>内容：</strong>
         <textarea
           v-model="form.contents"
@@ -34,7 +25,6 @@
           required
         ></textarea>
       </div>
-      <!-- 必要なフィールドがあればここに追加 -->
       <div>
         <button type="submit" style="padding:8px 32px;">保存</button>
       </div>
@@ -45,10 +35,9 @@
 <script>
 export default {
   async asyncData({ $axios, query }) {
-    // 詳細画面と同じAPIでデータ取得
     const id = query.id;
     if (!id) {
-      return {  resp: { details: {} } };
+      return { resp: { details: {} } };
     }
     const resp = await $axios.$get(`/rcms-api/10/topics/${id}`);
     return { resp };
@@ -63,19 +52,33 @@ export default {
       },
     };
   },
-  mounted() {
-    // APIで取得した内容をフォーム初期値にセット
-    if (this.resp && this.resp.details) {
-      this.form = { ...this.resp.details };
-    }
+  created() {
+    const d = this.resp?.details || {};
+    this.form = {
+      topics_id: d.topics_id || '',
+      subject: d.subject || '',
+      update_ymdhi: d.update_ymdhi || '',
+      contents: d.contents || '',
+    };
   },
   methods: {
-    // 保存処理（ここでは仮でconsole出力）
     async handleSubmit() {
-      // 例: 保存API送信
-      // await this.$axios.$post('/rcms-api/10/insert', this.form);
+      // 保存前に更新日時を現在日時(YYYYMMDDHHmm形式)で設定
+      const now = new Date();
+      const pad = (n) => (n < 10 ? '0' + n : n);
+      this.form.update_ymdhi =
+        now.getFullYear().toString() +
+        pad(now.getMonth() + 1) +
+        pad(now.getDate()) +
+        pad(now.getHours()) +
+        pad(now.getMinutes());
+
+      // ここに保存API呼び出しを実装してください
+      // 例:
+      // await this.$axios.$post('/rcms-api/10/topics/update', this.form);
+
       console.log('保存データ:', this.form);
-      alert('保存しました');
+      alert('保存しました（更新日時は自動セットされました）');
     },
   },
 };
