@@ -14,7 +14,6 @@
         {{ n.subject }}
       </div>
       <div>
-        <strong>詳細へ：</strong>
         <button
           type="button"
           @click="goToDetail(n.topics_id)"
