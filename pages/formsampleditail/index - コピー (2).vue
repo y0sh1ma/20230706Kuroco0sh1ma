@@ -18,30 +18,15 @@
       <strong>内容：</strong>
       <span>{{ resp.details.contents }}</span>
     </div>
-
-    <div style="text-align: center; margin-top: 32px;">
-      <button
-        @click="goToUpdate"
-        style="padding: 10px 24px; font-size:16px; cursor:pointer;"
-      >
-        更新
-      </button>
-    </div>
   </div>
 </template>
 
 <script>
 export default {
-  methods: {
-    goToUpdate() {
-      const id = this.resp?.details?.topics_id;
-      if (!id) {
-        alert('IDが取得できません');
-        return;
-      }
-      // Nuxtのrouter.pushで遷移（クエリ付き）
-      this.$router.push({ path: '/fromsampleupdate', query: { id } });
-    },
+  async asyncData({ $axios, query }) {
+    const id = query.id;
+    const resp = await $axios.$get(`/rcms-api/10/topics/${id}`);
+    return { resp };
   },
 };
 </script>
