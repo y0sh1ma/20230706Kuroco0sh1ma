@@ -19,21 +19,19 @@
       <span>{{ resp.details.contents }}</span>
     </div>
 
-
     <div style="text-align: center; margin-top: 32px;">
       <button
         @click="goToUpdate"
-        style="padding: 10px 24px; font-size:16px; cursor:pointer;"
+        class="btn"
       >
         更新
       </button>
     </div>
 
-
     <div style="text-align: center; margin-top: 16px;">
       <button
         @click="goBack"
-        style="padding: 8px 24px; font-size:14px; cursor:pointer;"
+        class="btn"
       >
         戻る
       </button>
