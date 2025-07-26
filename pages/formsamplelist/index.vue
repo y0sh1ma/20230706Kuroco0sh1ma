@@ -62,17 +62,3 @@ export default {
 };
 </script>
 
-<style scoped>
-.detail-button {
-  padding: 8px 20px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #f5f5f5;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-.detail-button:hover {
-  background-color: #e0e0e0;
-}
-</style>

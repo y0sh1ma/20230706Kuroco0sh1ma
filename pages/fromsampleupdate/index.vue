@@ -89,7 +89,7 @@ export default {
 
       // 保存API呼び出し（エンドポイントはご指定の /rcms-api/10/topics/update）
       try {
-        await this.$axios.$post('/rcms-api/10/topics/update', this.form);
+        await this.$axios.$post('/rcms-api/10/upsert', this.form);
         alert('保存しました（更新日時は自動セットされました）');
       } catch (e) {
         alert('保存に失敗しました');
