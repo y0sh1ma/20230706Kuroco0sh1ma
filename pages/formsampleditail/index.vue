@@ -19,6 +19,7 @@
       <span>{{ resp.details.contents }}</span>
     </div>
 
+<!---
     <div style="text-align: center; margin-top: 32px;">
       <button
         @click="goToUpdate"
@@ -27,6 +28,7 @@
         更新
       </button>
     </div>
+--->
   </div>
 </template>
 
