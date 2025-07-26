@@ -32,6 +32,11 @@
 
 <script>
 export default {
+  async asyncData({ $axios, query }) {
+    const id = query.id;
+    const resp = await $axios.$get(`/rcms-api/10/topics/${id}`);
+    return { resp };
+  },
   methods: {
     goToUpdate() {
       const id = this.resp?.details?.topics_id;
@@ -39,8 +44,8 @@ export default {
         alert('IDが取得できません');
         return;
       }
-      // Nuxtのrouter.pushで遷移（クエリ付き）
-      this.$router.push({ path: '/fromsampleupdate', query: { id } });
+      // "di"というクエリ名で遷移させる
+      this.$router.push({ path: '/fromsampleupdate', query: { di: id } });
     },
   },
 };
