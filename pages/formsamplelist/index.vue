@@ -42,12 +42,15 @@
 <script>
 export default {
   async asyncData({ $axios }) {
-    return { resp: await $axios.$get('/rcms-api/10/list','',
+    return { resp: await $axios.$get('/rcms-api/10/list'
+	<!--
+	,'',
         {
           headers: {
             'X-RCMS-API-ACCESS-TOKEN': '03dc65148cbdad0e9123d14b407282e57c0fee7b69859bf17b16d6e883f0cbb8'
           }
         }
+	-->
 	) };
   },
   methods: {
