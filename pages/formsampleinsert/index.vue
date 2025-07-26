@@ -18,13 +18,6 @@
           required
         />
       </div>
-
-      <div style="margin-bottom:16px;">
-        <strong>更新日時：</strong>
-        <!-- 編集不可、保存時に自動セット -->
-        <span>{{ form.update_ymdhi || '未更新' }}</span>
-      </div>
-
       <div style="margin-bottom:16px;">
         <strong>内容：</strong>
         <textarea
@@ -69,7 +62,7 @@ export default {
   created() {
     const d = this.resp?.details || {};
     this.form = {
-      topics_id: d.topics_id || '',
+	  open_flg: '1',
       subject: d.subject || '',
       update_ymdhi: d.update_ymdhi || '',
       contents: d.contents || '',
@@ -77,19 +70,17 @@ export default {
   },
   methods: {
     async handleSubmit() {
-      // 更新日時を自動セット
-      const now = new Date();
-      const pad = (n) => (n < 10 ? '0' + n : n);
-      this.form.update_ymdhi =
-        now.getFullYear().toString() +
-        pad(now.getMonth() + 1) +
-        pad(now.getDate()) +
-        pad(now.getHours()) +
-        pad(now.getMinutes());
-
-      // 保存API呼び出し（エンドポイントはご指定の /rcms-api/10/topics/update）
       try {
-        await this.$axios.$post('/rcms-api/10/insert', this.form);
+        await this.$axios.$post('/rcms-api/10/insert', this.form,
+		
+		this.form,
+        {
+          headers: {
+            'X-RCMS-API-ACCESS-TOKEN': '03dc65148cbdad0e9123d14b407282e57c0fee7b69859bf17b16d6e883f0cbb8'
+          }
+        }
+		
+		);
         alert('保存しました（更新日時は自動セットされました）');
       } catch (e) {
         alert('保存に失敗しました');
