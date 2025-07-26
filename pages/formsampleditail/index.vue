@@ -29,6 +29,15 @@
       </button>
     </div>
 --->
+    <div style="text-align: center; margin-top: 16px;">
+      <button
+        @click="goBack"
+        style="padding: 8px 24px; font-size:14px; cursor:pointer;"
+      >
+        戻る
+      </button>
+    </div>
+
   </div>
 </template>
 
