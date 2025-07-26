@@ -5,8 +5,10 @@
     <form @submit.prevent="handleSubmit">
       <div style="margin-bottom:16px;">
         <strong>ID：</strong>
+        <!-- 編集不可なのでspanで表示 -->
         <span>{{ form.topics_id }}</span>
       </div>
+
       <div style="margin-bottom:16px;">
         <strong>タイトル：</strong>
         <input
@@ -16,6 +18,13 @@
           required
         />
       </div>
+
+      <div style="margin-bottom:16px;">
+        <strong>更新日時：</strong>
+        <!-- 編集不可、保存時に自動セット -->
+        <span>{{ form.update_ymdhi || '未更新' }}</span>
+      </div>
+
       <div style="margin-bottom:16px;">
         <strong>内容：</strong>
         <textarea
@@ -25,6 +34,7 @@
           required
         ></textarea>
       </div>
+
       <div>
         <button type="submit" style="padding:8px 32px;">保存</button>
       </div>
@@ -63,7 +73,7 @@ export default {
   },
   methods: {
     async handleSubmit() {
-      // 保存前に更新日時を現在日時(YYYYMMDDHHmm形式)で設定
+      // 更新日時を自動セット
       const now = new Date();
       const pad = (n) => (n < 10 ? '0' + n : n);
       this.form.update_ymdhi =
@@ -73,12 +83,14 @@ export default {
         pad(now.getHours()) +
         pad(now.getMinutes());
 
-      // ここに保存API呼び出しを実装してください
-      // 例:
-      // await this.$axios.$post('/rcms-api/10/topics/update', this.form);
-
-      console.log('保存データ:', this.form);
-      alert('保存しました（更新日時は自動セットされました）');
+      // 保存API呼び出し（エンドポイントはご指定の /rcms-api/10/topics/update）
+      try {
+        await this.$axios.$post('/rcms-api/10/topics/update', this.form);
+        alert('保存しました（更新日時は自動セットされました）');
+      } catch (e) {
+        alert('保存に失敗しました');
+        console.error(e);
+      }
     },
   },
 };
