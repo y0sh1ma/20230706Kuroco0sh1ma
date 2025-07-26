@@ -2,13 +2,24 @@
 
 <template>
   <div>
-
-    <div v-for="n in resp.list" :key="n.slag" >
-      <div>{{ n.subject }}</div>
-      <div>{{ n.contents }}</div>
-      <a :href="`/formsampleditail/?id=${n.topics_id}`"><div>{{ n.topics_id }}</div></a>
+    <div
+      v-for="n in resp.list"
+      :key="n.topics_id"
+      style="border:1px solid #ccc; padding:16px; margin-bottom:16px; border-radius:8px;"
+    >
+      <div>
+        <strong>id：</strong>
+        {{ n.topics_id }}
+      </div>
+      <div>
+        <strong>タイトル：</strong>
+        {{ n.subject }}
+      </div>
+      <div>
+        <strong>ID：</strong>
+        <a :href="`/formsampleditail/?id=${n.topics_id}`">{{ n.topics_id }}</a>
+      </div>
     </div>
-
   </div>
 </template>
 
