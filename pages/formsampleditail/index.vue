@@ -5,6 +5,9 @@
   <div>
     <hr>
     <div>{{resp.details.topics_id}}</div>
+    <div>{{resp.details.subject}}</div>
+    <div>{{resp.details.update_ymdhi}}</div>
+    <div>{{resp.details.contents}}</div>
   </div>
 </template>
 
