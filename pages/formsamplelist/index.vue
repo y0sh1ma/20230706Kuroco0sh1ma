@@ -5,7 +5,7 @@
     <div
       v-for="n in resp.list"
       :key="n.topics_id"
-      style="border:1px solid #ccc; padding:16px; margin-bottom:16px; border-radius:8px;"
+      style="border:1px solid #ccc; padding:16px; margin-bottom:16px; border-radius:8px; max-width:600px; margin:32px auto;"
     >
       <div>
         <strong>id：</strong>
