@@ -45,7 +45,7 @@ export default {
         return;
       }
       // "di"というクエリ名で遷移させる
-      this.$router.push({ path: '/fromsampleupdate', query: { di: id } });
+      this.$router.push({ path: '/fromsampleupdate', query: { id: id } });
     },
   },
 };
