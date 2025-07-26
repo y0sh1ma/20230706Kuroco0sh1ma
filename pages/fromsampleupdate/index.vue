@@ -38,6 +38,17 @@
       <div>
         <button type="submit" style="padding:8px 32px;">保存</button>
       </div>
+
+      <div style="text-align: center; margin-top: 16px;">
+        <button
+          type="button"
+          @click="goBack"
+          style="padding: 8px 24px; font-size:14px; cursor:pointer;"
+        >
+          戻る
+        </button>
+      </div>
+
     </form>
   </div>
 </template>
@@ -92,6 +103,11 @@ export default {
         console.error(e);
       }
     },
+
+    goBack() {
+      window.history.back();
+    },
+
   },
 };
 </script>

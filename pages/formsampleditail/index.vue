@@ -19,7 +19,7 @@
       <span>{{ resp.details.contents }}</span>
     </div>
 
-<!---
+
     <div style="text-align: center; margin-top: 32px;">
       <button
         @click="goToUpdate"
@@ -28,7 +28,8 @@
         更新
       </button>
     </div>
---->
+
+
     <div style="text-align: center; margin-top: 16px;">
       <button
         @click="goBack"
@@ -58,6 +59,11 @@ export default {
       // "di"というクエリ名で遷移させる
       this.$router.push({ path: '/fromsampleupdate', query: { id: id } });
     },
+
+    goBack() {
+      window.history.back();
+    },
+
   },
 };
 </script>
