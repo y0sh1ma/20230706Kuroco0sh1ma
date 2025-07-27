@@ -3,9 +3,8 @@
     style="border:1px solid #ccc; padding:24px; border-radius:8px; max-width:600px; margin:32px auto;"
   >
     <form @submit.prevent="handleSubmit">
-      <div style="margin-bottom:16px;">
+      <div style="margin-bottom:16px;" v-if="form.topics_id">
         <strong>ID：</strong>
-        <!-- 編集不可なのでspanで表示 -->
         <span>{{ form.topics_id }}</span>
       </div>
 
@@ -32,9 +31,6 @@
         <button type="submit" class="btn-primary">保存</button>
         <button type="button" @click="goBack" class="btn-primary">戻る</button>
       </div>
-
-
-
     </form>
   </div>
 </template>
@@ -44,44 +40,35 @@ export default {
   data() {
     return {
       form: {
-        topics_id: '',
+        // topics_id: '', // 新規なら不要。編集時だけ残す
         subject: '',
-        update_ymdhi: '',
+        update_ymdhi: '', // 必要なら残す
         contents: '',
+        open_flg: '1',    // 必要ならここでセット
       },
-    };
-  },
-  created() {
-    const d = this.resp?.details || {};
-    this.form = {
-	  open_flg: '1',
-      subject: d.subject || '',
-      contents: d.contents || '',
     };
   },
   methods: {
     async handleSubmit() {
       try {
-        await this.$axios.$post('/rcms-api/10/insert', this.form,
-        {
-          headers: {
-            'X-RCMS-API-ACCESS-TOKEN': '03dc65148cbdad0e9123d14b407282e57c0fee7b69859bf17b16d6e883f0cbb8'
+        await this.$axios.$post(
+          '/rcms-api/10/insert',
+          this.form,
+          {
+            headers: {
+              'X-RCMS-API-ACCESS-TOKEN': '03dc65148cbdad0e9123d14b407282e57c0fee7b69859bf17b16d6e883f0cbb8'
+            }
           }
-        }
-		
-		);
+        );
         alert('保存しました（更新日時は自動セットされました）');
       } catch (e) {
         alert('保存に失敗しました');
         console.error(e);
       }
     },
-
     goBack() {
       window.history.back();
     },
-
   },
 };
 </script>
-
