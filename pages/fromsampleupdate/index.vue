@@ -43,12 +43,13 @@ export default {
     if (!id) {
       return { resp: { details: {} } };
     }
-    const resp = await $axios.$get(`/rcms-api/10/topics/${id}`,
-	    {
-		  headers: { 'X-RCMS-API-ACCESS-TOKEN': '42275dcbd8c48d924ff658cef0f25d1ac18985ea4f09f3caf9936c509c6db132' }
-		}
+    const resp = await $axios.$get(`/rcms-api/10/topics/${id}`
 	);
-    return { resp };
+//      ,{
+//        headers: { 'X-RCMS-API-ACCESS-TOKEN': '42275dcbd8c48d924ff658cef0f25d1ac18985ea4f09f3caf9936c509c6db132' }
+//      }
+
+	return { resp };
   },
   data() {
     return {
@@ -74,11 +75,14 @@ export default {
       try {
         const id = this.form.topics_id;
         const url = `/rcms-api/10/upsert/${id}`;
-        await this.$axios.$post(url, this.form,
-	    {
-		  headers: {'X-RCMS-API-ACCESS-TOKEN': '42275dcbd8c48d924ff658cef0f25d1ac18985ea4f09f3caf9936c509c6db132'
-		}
+        await this.$axios.$post(url, this.form
 		);
+		
+//       ,{
+//	  	    headers: { 'X-RCMS-API-ACCESS-TOKEN': '42275dcbd8c48d924ff658cef0f25d1ac18985ea4f09f3caf9936c509c6db132' }
+//	  	  }
+
+		
         alert('保存しました');
       } catch (e) {
         alert('保存に失敗しました');
