@@ -54,8 +54,7 @@ export default {
           this.form,
           {
             headers: {
-              'X-RCMS-API-ACCESS-TOKEN': '03dc65148cbdad0e9123d14b407282e57c0fee7b69859bf17b16d6e883f0cbb8'
-            }
+              'X-RCMS-API-ACCESS-TOKEN': '42275dcbd8c48d924ff658cef0f25d1ac18985ea4f09f3caf9936c509c6db132'            }
           }
         );
         alert('保存しました（更新日時は自動セットされました）');
