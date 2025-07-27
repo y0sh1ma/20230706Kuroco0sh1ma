@@ -41,6 +41,8 @@
 
 <script>
 export default {
+
+<!---
   async asyncData({ $axios, query }) {
     const id = query.id;
     if (!id) {
@@ -49,6 +51,7 @@ export default {
     const resp = await $axios.$get(`/rcms-api/10/topics/${id}`);
     return { resp };
   },
+--->
   data() {
     return {
       form: {
@@ -59,6 +62,7 @@ export default {
       },
     };
   },
+<!---
   created() {
     const d = this.resp?.details || {};
     this.form = {
@@ -67,6 +71,7 @@ export default {
       contents: d.contents || '',
     };
   },
+--->
   methods: {
     async handleSubmit() {
       try {
