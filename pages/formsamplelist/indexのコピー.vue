@@ -42,19 +42,11 @@
 <script>
 export default {
   async asyncData({ $axios }) {
-    return {
-      resp: await $axios.$get(
-        '/rcms-api/10/list',
-        {
-          headers: {
-            'X-RCMS-API-ACCESS-TOKEN': 'abc'
-          }
-        }
-      )
-    };
+    return { resp: await $axios.$get('/rcms-api/10/list') };
   },
   methods: {
     goToDetail(id) {
+      // Vue Routerがあればこれで推奨。なければ window.location.href でも可
       this.$router
         ? this.$router.push({ path: '/formsampleditail/', query: { id } })
         : (window.location.href = `/formsampleditail/?id=${id}`);
@@ -69,3 +61,4 @@ export default {
   },
 };
 </script>
+
