@@ -68,7 +68,9 @@ export default {
   methods: {
     async handleSubmit() {
       try {
-        await this.$axios.$post('/rcms-api/10/upsert', this.form);
+        const id = this.form.topics_id;
+        const url = `/rcms-api/10/upsert/${id}`;
+        await this.$axios.$post(url, this.form);
         alert('保存しました');
       } catch (e) {
         alert('保存に失敗しました');
