@@ -65,8 +65,7 @@ export default {
     this.form = {
       topics_id: d.topics_id || '',
       subject: d.subject || '',
-      update_ymdhi: d.update_ymdhi || '',
-      contents: d.contents || '',
+      contents: d.contents || ''
     };
   },
   methods: {
@@ -74,12 +73,17 @@ export default {
       try {
         const id = this.form.topics_id;
         const url = `/rcms-api/10/upsert/${id}`;
-        await this.$axios.$post(url, this.form
+		
+		const postData = {
+          subject: this.form.subject,
+          contents: this.form.contents,
+		};
+		
+        await this.$axios.$post(url, postData
        ,{
 	  	    headers: { 'X-RCMS-API-ACCESS-TOKEN': '42275dcbd8c48d924ff658cef0f25d1ac18985ea4f09f3caf9936c509c6db132' }
         }
 		);
-
 		
         alert('保存しました');
       } catch (e) {
