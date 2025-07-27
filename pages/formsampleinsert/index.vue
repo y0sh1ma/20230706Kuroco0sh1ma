@@ -42,7 +42,7 @@ export default {
       form: {
         subject: '',
         contents: '',
-        open_flg: '1',    // 必要なら追加
+        open_flg: 1
       },
     };
   },
