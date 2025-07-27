@@ -5,7 +5,6 @@
     <form @submit.prevent="handleSubmit">
       <div style="margin-bottom:16px;">
         <strong>ID：</strong>
-        <!-- 編集不可なのでspanで表示 -->
         <span>{{ form.topics_id }}</span>
       </div>
 
@@ -18,13 +17,6 @@
           required
         />
       </div>
-
-      <div style="margin-bottom:16px;">
-        <strong>更新日時：</strong>
-        <!-- 編集不可、保存時に自動セット -->
-        <span>{{ form.update_ymdhi || '未更新' }}</span>
-      </div>
-
       <div style="margin-bottom:16px;">
         <strong>内容：</strong>
         <textarea
@@ -38,8 +30,6 @@
       <div class="button-group">
         <button type="submit" class="btn-primary">保存</button>
         <button type="button" @click="goBack" class="btn-primary">戻る</button>
-      </div>
-
       </div>
 
     </form>
@@ -77,25 +67,28 @@ export default {
   },
   methods: {
     async handleSubmit() {
-      // 更新日時を自動セット
-      const now = new Date();
-      const pad = (n) => (n < 10 ? '0' + n : n);
-      this.form.update_ymdhi =
-        now.getFullYear().toString() +
-        pad(now.getMonth() + 1) +
-        pad(now.getDate()) +
-        pad(now.getHours()) +
-        pad(now.getMinutes());
-
-      // 保存API呼び出し（エンドポイントはご指定の /rcms-api/10/topics/update）
       try {
         await this.$axios.$post('/rcms-api/10/upsert', this.form);
-        alert('保存しました（更新日時は自動セットされました）');
+        alert('保存しました');
       } catch (e) {
         alert('保存に失敗しました');
-        console.error(e);
+        // --- 詳細デバッグ出力 ---
+        if (e.response) {
+          // サーバーレスポンスが返っている場合
+          console.error('POST /rcms-api/10/upsert error:');
+          console.error('status:', e.response.status);
+          console.error('response data:', e.response.data);
+          console.error('response headers:', e.response.headers);
+        } else if (e.request) {
+          // リクエスト送信済だがレスポンス受信できず
+          console.error('No response received:');
+          console.error('request:', e.request);
+        } else {
+          // リクエスト前のJSエラーなど
+          console.error('Error message:', e.message);
+        }
+        console.error('config:', e.config);
       }
-    },
 
     goBack() {
       window.history.back();
