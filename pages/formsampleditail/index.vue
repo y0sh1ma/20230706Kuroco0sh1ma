@@ -22,7 +22,7 @@
     <div
       style="display: flex; justify-content: flex-start; gap: 16px; margin-top: 32px;"
     >
-      <button @click="goToUpdate" class="btn">更新</button>
+      <button @click="goToUpdate" class="btn">更新画面へ遷移</button>
       <button @click="goBack" class="btn">戻る</button>
     </div>
 
