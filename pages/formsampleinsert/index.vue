@@ -4,12 +4,6 @@
   >
     <form @submit.prevent="handleSubmit">
       <div style="margin-bottom:16px;">
-        <strong>ID：</strong>
-        <!-- 編集不可なのでspanで表示 -->
-        <span>{{ form.topics_id }}</span>
-      </div>
-
-      <div style="margin-bottom:16px;">
         <strong>タイトル：</strong>
         <input
           v-model="form.subject"
@@ -32,9 +26,6 @@
         <button type="submit" class="btn-primary">保存</button>
         <button type="button" @click="goBack" class="btn-primary">戻る</button>
       </div>
-
-      </div>
-
     </form>
   </div>
 </template>
@@ -44,35 +35,32 @@ export default {
   data() {
     return {
       form: {
-        topics_id: '',
         subject: '',
-        update_ymdhi: '',
         contents: '',
-      },
+      }
     };
   },
   methods: {
     async handleSubmit() {
       try {
-        await this.$axios.$post('/rcms-api/10/insert', this.form,
-        {
-          headers: {
-            'X-RCMS-API-ACCESS-TOKEN': '03dc65148cbdad0e9123d14b407282e57c0fee7b69859bf17b16d6e883f0cbb8'
+        await this.$axios.$post(
+          '/rcms-api/10/insert',
+          this.form,
+          {
+            headers: {
+              'X-RCMS-API-ACCESS-TOKEN': '03dc65148cbdad0e9123d14b407282e57c0fee7b69859bf17b16d6e883f0cbb8'
+            }
           }
-        }
-		
-		);
+        );
         alert('保存しました（更新日時は自動セットされました）');
       } catch (e) {
         alert('保存に失敗しました');
         console.error(e);
       }
     },
-
     goBack() {
       window.history.back();
-    },
-
-  },
+    }
+  }
 };
 </script>
