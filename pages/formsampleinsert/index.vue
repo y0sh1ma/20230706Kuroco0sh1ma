@@ -40,9 +40,7 @@ export default {
   data() {
     return {
       form: {
-        // topics_id: '', // 必要なら追加
         subject: '',
-        update_ymdhi: '', // 必要なら追加
         contents: '',
         open_flg: '1',    // 必要なら追加
       },
