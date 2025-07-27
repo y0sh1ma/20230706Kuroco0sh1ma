@@ -64,7 +64,6 @@ export default {
     this.form = {
 	  open_flg: '1',
       subject: d.subject || '',
-      update_ymdhi: d.update_ymdhi || '',
       contents: d.contents || '',
     };
   },
