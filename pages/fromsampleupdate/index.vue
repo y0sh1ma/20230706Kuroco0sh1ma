@@ -76,11 +76,10 @@ export default {
         const id = this.form.topics_id;
         const url = `/rcms-api/10/upsert/${id}`;
         await this.$axios.$post(url, this.form
+       ,{
+	  	    headers: { 'X-RCMS-API-ACCESS-TOKEN': '42275dcbd8c48d924ff658cef0f25d1ac18985ea4f09f3caf9936c509c6db132' }
+        }
 		);
-		
-//       ,{
-//	  	    headers: { 'X-RCMS-API-ACCESS-TOKEN': '42275dcbd8c48d924ff658cef0f25d1ac18985ea4f09f3caf9936c509c6db132' }
-//	  	  }
 
 		
         alert('保存しました');
