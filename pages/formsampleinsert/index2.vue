@@ -40,11 +40,11 @@ export default {
   data() {
     return {
       form: {
-        // topics_id: '', // 必要なら追加
+        // topics_id: '', // 新規なら不要。編集時だけ残す
         subject: '',
-        update_ymdhi: '', // 必要なら追加
+        update_ymdhi: '', // 必要なら残す
         contents: '',
-        open_flg: '1',    // 必要なら追加
+        open_flg: '1',    // 必要ならここでセット
       },
     };
   },
@@ -63,22 +63,7 @@ export default {
         alert('保存しました（更新日時は自動セットされました）');
       } catch (e) {
         alert('保存に失敗しました');
-        // --- 詳細デバッグ出力 ---
-        if (e.response) {
-          // サーバーレスポンスが返っている場合
-          console.error('POST /rcms-api/10/insert error:');
-          console.error('status:', e.response.status);
-          console.error('response data:', e.response.data);
-          console.error('response headers:', e.response.headers);
-        } else if (e.request) {
-          // リクエスト送信済だがレスポンス受信できず
-          console.error('No response received:');
-          console.error('request:', e.request);
-        } else {
-          // リクエスト前のJSエラーなど
-          console.error('Error message:', e.message);
-        }
-        console.error('config:', e.config);
+        console.error(e);
       }
     },
     goBack() {
