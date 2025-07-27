@@ -35,7 +35,13 @@
 export default {
   async asyncData({ $axios, query }) {
     const id = query.id;
-    const resp = await $axios.$get(`/rcms-api/10/topics/${id}`);
+    const resp = await $axios.$get(`/rcms-api/10/topics/${id}`,
+	        {
+          headers: {
+            'X-RCMS-API-ACCESS-TOKEN': '42275dcbd8c48d924ff658cef0f25d1ac18985ea4f09f3caf9936c509c6db132'
+          }
+        }
+	);
     return { resp };
   },
   methods: {
