@@ -33,7 +33,7 @@
         <button type="button" @click="goBack" class="btn-primary">戻る</button>
       </div>
 
-      </div>
+
 
     </form>
   </div>
@@ -41,14 +41,6 @@
 
 <script>
 export default {
-  async asyncData({ $axios, query }) {
-    const id = query.id;
-    if (!id) {
-      return { resp: { details: {} } };
-    }
-    const resp = await $axios.$get(`/rcms-api/10/topics/${id}`);
-    return { resp };
-  },
   data() {
     return {
       form: {
