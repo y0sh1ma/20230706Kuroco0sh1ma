@@ -11,7 +11,6 @@
       </button>
     </div>
 
-  <div>
     <div
       v-for="n in resp.list"
       :key="n.topics_id"
@@ -44,7 +43,7 @@ export default {
   async asyncData({ $axios }) {
     return {
       resp: await $axios.$get(
-        '/rcms-api/10/list',
+        'https://diverta-oshima.g.kuroco.app/rcms-api/10/list',
         {
           headers: {
             'X-RCMS-API-ACCESS-TOKEN': '42275dcbd8c48d924ff658cef0f25d1ac18985ea4f09f3caf9936c509c6db132'
@@ -56,14 +55,14 @@ export default {
   methods: {
     goToDetail(id) {
       this.$router
-        ? this.$router.push({ path: '/formsampleditail/', query: { id } })
-        : (window.location.href = `/formsampleditail/?id=${id}`);
+        ? this.$router.push({ path: 'https://diverta-oshima.g.kuroco.app/formsampleditail/', query: { id } })
+        : (window.location.href = `https://diverta-oshima.g.kuroco.app/formsampleditail/?id=${id}`);
     },
     goToInsert() {
       if (this.$router) {
-        this.$router.push('/formsampleinsert');
+        this.$router.push('https://diverta-oshima.g.kuroco.app/formsampleinsert');
       } else {
-        window.location.href = '/formsampleinsert';
+        window.location.href = 'https://diverta-oshima.g.kuroco.app/formsampleinsert';
       }
     },
   },
