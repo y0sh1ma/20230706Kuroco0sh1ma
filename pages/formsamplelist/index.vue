@@ -55,14 +55,14 @@ export default {
   methods: {
     goToDetail(id) {
       this.$router
-        ? this.$router.push({ path: 'https://diverta-oshima.g.kuroco.app/formsampleditail/', query: { id } })
-        : (window.location.href = `https://diverta-oshima.g.kuroco.app/formsampleditail/?id=${id}`);
+        ? this.$router.push({ path: '/formsampleditail/', query: { id } })
+        : (window.location.href = `/formsampleditail/?id=${id}`);
     },
     goToInsert() {
       if (this.$router) {
-        this.$router.push('https://diverta-oshima.g.kuroco.app/formsampleinsert');
+        this.$router.push('/formsampleinsert');
       } else {
-        window.location.href = 'https://diverta-oshima.g.kuroco.app/formsampleinsert';
+        window.location.href = '/formsampleinsert';
       }
     },
   },
