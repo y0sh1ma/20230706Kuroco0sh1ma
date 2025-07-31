@@ -43,7 +43,7 @@ export default {
     if (!id) {
       return { resp: { details: {} } };
     }
-    const resp = await $axios.$get(`/rcms-api/10/topics/${id}`
+    const resp = await $axios.$get(`https://diverta-oshima.g.kuroco-front.app/rcms-api/10/topics/${id}`
       ,{
         headers: { 'X-RCMS-API-ACCESS-TOKEN': '42275dcbd8c48d924ff658cef0f25d1ac18985ea4f09f3caf9936c509c6db132' }
       }
@@ -72,7 +72,7 @@ export default {
     async handleSubmit() {
       try {
         const id = this.form.topics_id;
-        const url = `/rcms-api/10/upsert/${id}`;
+        const url = `https://diverta-oshima.g.kuroco-front.app/rcms-api/10/upsert/${id}`;
 		
 		const postData = {
           subject: this.form.subject,

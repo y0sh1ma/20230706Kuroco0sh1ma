@@ -50,7 +50,7 @@ export default {
     async handleSubmit() {
       try {
         await this.$axios.$post(
-          '/rcms-api/10/insert',
+          'https://diverta-oshima.g.kuroco-front.app/rcms-api/10/insert',
           this.form,
           {
             headers: {
