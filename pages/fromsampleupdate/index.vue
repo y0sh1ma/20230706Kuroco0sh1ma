@@ -86,6 +86,7 @@ export default {
 		);
 		
         alert('保存しました');
+        window.history.back();s
       } catch (e) {
         alert('保存に失敗しました');
         // --- 詳細デバッグ出力 ---
