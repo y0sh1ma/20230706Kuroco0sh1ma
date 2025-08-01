@@ -58,7 +58,6 @@ export default {
           }
         );
         alert('保存しました');
-        window.history.back();
       } catch (e) {
         alert('保存に失敗しました');
         // --- 詳細デバッグ出力 ---
@@ -78,6 +77,7 @@ export default {
         }
         console.error('config:', e.config);
       }
+      window.history.back();
     },
     goBack() {
       window.history.back();
